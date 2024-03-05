@@ -1,0 +1,30 @@
+.blog-page-container {
+    mat-toolbar {
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    ::ng-deep .mat-grid-tile-content {
+        align-items: flex-start;
+        margin-top: 30px;
+    }
+
+    mat-card {
+        width: calc(100% - 80px);
+        max-height: calc(100% - 80px);
+        overflow: hidden;
+
+        .emphasis {
+            font-weight: bold;
+        }
+
+        mat-card-content {
+            margin: 16px 0;
+            overflow: auto;
+        }
+
+        mat-card-actions > * {
+            margin-left: 16px;
+        }
+    }
+}

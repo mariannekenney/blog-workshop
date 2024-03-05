@@ -1,0 +1,32 @@
+<div class="blog-post-container">
+    <form [formGroup]="blogPostFormGroup">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title"/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea matInput cols="40" rows="10" formControlName="content"></textarea>
+        </mat-form-field>
+    </form>
+
+    <div class="form-actions">
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+        
+        @if (data) {
+            <button mat-raised-button color="primary"
+                [disabled]="blogPostFormGroup.invalid"
+                (click)="savePost()">
+                Save
+            </button>
+        } @else {
+            <button mat-raised-button color="accent"
+                [disabled]="blogPostFormGroup.invalid"
+                (click)="createPost()">
+                Create
+            </button>
+        }
+    </div>
+</div>
+

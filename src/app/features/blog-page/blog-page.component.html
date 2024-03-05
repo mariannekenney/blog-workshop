@@ -1,0 +1,40 @@
+<div class="blog-page-container">
+    <mat-toolbar color="primary">
+        <span>My Blog</span>
+        <button mat-raised-button color="accent" (click)="openPostDialog()">New Post</button>
+        <button mat-button (click)="logout()">Logout</button>
+    </mat-toolbar>
+
+    <mat-grid-list cols="3">
+        @for (post of allBlogPosts; track post.id) {
+            <mat-grid-tile>
+                <mat-card>
+                    <mat-card-header color="primary">
+                        <mat-card-title>{{ post.title }}</mat-card-title>
+            
+                        <mat-card-subtitle>
+                            <span>Created </span>
+                            <span class="emphasis">{{ post.createdAt | date }}</span>
+                            <span> by </span>
+                            <span class="emphasis">{{ post.author }}</span>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    
+                    <mat-divider></mat-divider>
+            
+                    <mat-card-content>{{ post.content }}</mat-card-content>
+            
+                    <mat-card-actions align="end">
+                        <mat-card-subtitle>
+                            <span>Updated </span>
+                            <span class="emphasis">{{ post.updatedAt | date: 'short' }}</span>
+                        </mat-card-subtitle>
+
+                        <button mat-flat-button color="primary" (click)="openPostDialog(post)">Edit</button>
+                        <button mat-flat-button color="warn" (click)="deletePost(post.id)">Delete</button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        }
+    </mat-grid-list>
+</div>
